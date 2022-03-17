@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {
   "email": "test@asd.com",
-  "password": "thisshouldbehidden"
+  "password": "password"
 }
  
 ###
@@ -13,7 +13,7 @@ GET http://localhost:3000/auth/333
 GET http://localhost:3000/auth?email=test@asd.com
 
 ###
-DELETE http://localhost:3000/auth/2
+DELETE http://localhost:3000/auth/1
 
 ###
 PATCH http://localhost:3000/auth/133
@@ -21,4 +21,12 @@ Content-Type: application/json
 
 {
   "password": "aaabbb"
+}
+
+###
+POST http://localhost:3000/auth/signin
+
+{
+  "email": "test@asd.com",
+  "password": "password"
 }
