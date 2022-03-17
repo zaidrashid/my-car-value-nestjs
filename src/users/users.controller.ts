@@ -2,6 +2,7 @@ import {
   Body,
   Controller,
   Delete,
+  ForbiddenException,
   Get,
   NotFoundException,
   Param,
@@ -24,12 +25,26 @@ export class UsersController {
     private authService: AuthService,
   ) {}
 
+  @Get('/whoami')
+  whoAmI(@Session() session: any) {
+    const { userId } = session;
+    if (!userId) {
+      throw new ForbiddenException('authorization required');
+    }
+    return this.userService.findOne(userId);
+  }
+
   @Post('signup')
   async createUser(@Body() body: CreateUserDto, @Session() session: any) {
     const { email, password } = body;
     const user = await this.authService.signup(email, password);
     session.userId = user.id;
     return user;
+  }
+
+  @Post('signout')
+  singout(@Session() session: any) {
+    session.userId = undefined;
   }
 
   @Post('signin')
