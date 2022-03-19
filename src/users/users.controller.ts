@@ -2,7 +2,6 @@ import {
   Body,
   Controller,
   Delete,
-  ForbiddenException,
   Get,
   NotFoundException,
   Param,
@@ -10,6 +9,7 @@ import {
   Post,
   Query,
   Session,
+  UseGuards,
 } from '@nestjs/common';
 import { Serialize } from '../interceptor/serialize.interceptor';
 import { CreateUserDto } from './dtos/create-user.dto';
@@ -17,6 +17,10 @@ import { UpdateUserDto } from './dtos/update-user.dto';
 import { UserDto } from './dtos/user.dto';
 import { UsersService } from './users.service';
 import { AuthService } from './auth.service';
+import { CurrentUser } from './decorators/current-user.decorator';
+import { User } from './user.entity';
+import { AuthGuard } from 'src/guards/auth.guard';
+
 @Controller('auth')
 @Serialize(UserDto)
 export class UsersController {
@@ -26,12 +30,9 @@ export class UsersController {
   ) {}
 
   @Get('/whoami')
-  whoAmI(@Session() session: any) {
-    const { userId } = session;
-    if (!userId) {
-      throw new ForbiddenException('authorization required');
-    }
-    return this.userService.findOne(userId);
+  @UseGuards(AuthGuard)
+  whoAmI(@CurrentUser() user: User) {
+    return user;
   }
 
   @Post('signup')
