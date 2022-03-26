@@ -1,7 +1,7 @@
 import { Body, Controller, Post, UseGuards } from '@nestjs/common';
-import { Serialize } from 'src/interceptor/serialize.interceptor';
-import { CurrentUser } from 'src/users/decorators/current-user.decorator';
-import { User } from 'src/users/user.entity';
+import { Serialize } from '../interceptor/serialize.interceptor';
+import { CurrentUser } from '../users/decorators/current-user.decorator';
+import { User } from '../users/user.entity';
 import { AuthGuard } from '../guards/auth.guard';
 import { CreateReportDto } from './dtos/create-report-dto';
 import { ReportDto } from './dtos/report-dto';
