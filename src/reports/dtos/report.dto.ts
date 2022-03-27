@@ -1,5 +1,5 @@
 import { Expose, Transform } from 'class-transformer';
-import { CreateReportDto } from './create-report-dto';
+import { CreateReportDto } from './create-report.dto';
 
 export class ReportDto implements CreateReportDto {
   @Expose()
