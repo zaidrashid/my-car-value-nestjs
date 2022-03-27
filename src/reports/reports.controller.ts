@@ -41,7 +41,6 @@ export class ReportsController {
 
   @Get()
   getEstimate(@Query() query: GetEstimtateDto) {
-    console.log(query);
-    return query;
+    return this.reportsService.createEstimate(query);
   }
 }

@@ -4,21 +4,21 @@ Content-Type: application/json
 
 {
   "make": "toyota",
-  "model": "corolla",
-  "price": 0,
-  "year": 1940,
-  "mileage": 0,
-  "lng": 0,
-  "lat": 0
+  "model": "supra",
+  "price": 5100,
+  "year": 1952,
+  "mileage": 30000,
+  "lng": 101.8613,
+  "lat": 3.9523
 }
 
 ###
-PATCH  http://localhost:3000/reports/6
+PATCH  http://localhost:3000/reports/10
 Content-Type: application/json
 
 {
-  "approved": false
+  "approved": true
 }
 
 ###
-GET http://localhost:3000/reports?year=1940&make=toyota&model=corolla&mileage=0&lng=0&lat=0
+GET http://localhost:3000/reports?year=1950&make=toyota&model=supra&mileage=40000&lng=102&lat=2
