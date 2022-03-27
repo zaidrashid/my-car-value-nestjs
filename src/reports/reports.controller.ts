@@ -15,6 +15,13 @@ import { ReportDto } from './dtos/report.dto';
 import { ReportsService } from './reports.service';
 import { ApprovedReportDto } from './dtos/approved-report.dto';
 import { AdminGuard } from 'src/guards/admin.guard';
+import { ReportsService } from './reports.service';
+import {
+  CreateReportDto,
+  ApprovedReportDto,
+  GetEstimtateDto,
+  ReportDto,
+} from './dtos';
 
 @Controller('reports')
 export class ReportsController {
