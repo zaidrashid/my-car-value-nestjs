@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { User } from '../users/user.entity';
 import { Report } from './report.entity';
 import { ReportsController } from './reports.controller';
 import { ReportsService } from './reports.service';
@@ -30,15 +31,20 @@ describe('ReportsController', () => {
 
   it('fail if body is not correct', () => {
     try {
-      controller.createReport({
-        make: 'test make',
-        model: 'test model',
-        price: 0,
-        year: 0,
-        mileage: 0,
-        lng: 0,
-        lat: 0,
-      });
+      controller.createReport(
+        {
+          make: 'test make',
+          model: 'test model',
+          price: 0,
+          year: 0,
+          mileage: 0,
+          lng: 0,
+          lat: 0,
+        },
+        {
+          id: 1,
+        } as User,
+      );
     } catch (err) {}
   });
 });

@@ -12,7 +12,7 @@ import { Serialize } from '../interceptor/serialize.interceptor';
 import { CurrentUser } from '../users/decorators/current-user.decorator';
 import { User } from '../users/user.entity';
 import { AuthGuard } from '../guards/auth.guard';
-import { AdminGuard } from 'src/guards/admin.guard';
+import { AdminGuard } from '../guards/admin.guard';
 import { ReportsService } from './reports.service';
 import {
   CreateReportDto,
